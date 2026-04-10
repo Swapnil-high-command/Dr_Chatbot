@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MEDI-BOT UI</title>
+
+<style>
+
+ 
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #fce4ec);
+}
+
+ 
+#parent{
+    width:98vw;
+    height:97vh;
+    background:white;
+}
+
+
+#menu{
+    background:#2c3e50;
+    padding:12px;
+}
+
+#menu ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+#menu ul li{
+    display:inline-block;
+    margin-right:40px;
+}
+
+#menu ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+#menu ul li a:hover{
+    color:#1abc9c;
+}
+
+
+#content{
+    text-align:center;
+    width:100%;
+    height:50vh;
+    background:#f4f6f7;
+    padding-top:20px;
+}
+
+ 
+#content div{
+    background:white;
+    float:left;
+    height:250px;
+    width:200px;
+    margin:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+#content div:hover{
+    transform:scale(1.05);
+    background:#e8f8f5;
+}
+
+ 
+#footer span{
+    float:right;
+    background:#ffffff;
+    border-radius:10px;
+    margin:20px;
+    height:280px;
+    width:250px;
+    padding:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+ 
+#footer span input{
+    width:90%;
+    padding:8px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    margin-bottom:10px;
+}
+
+#footer span button{
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#footer span button:hover{
+    background:#2980b9;
+}
+
+ 
+#chat{
+    height:130px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+    margin-top:10px;
+    padding:5px;
+    border-radius:5px;
+    background:#fafafa;
+}
+
+.user{
+    text-align:right;
+    color:#2c3e50;
+    margin:5px;
+}
+
+.bot{
+    text-align:left;
+    color:#16a085;
+    margin:5px;
+}
+ 
+.logo{
+    vertical-align:middle;
+    margin-right:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="parent">
+
+ 
+<div id="menu">
+<ul>
+<li><img height="50" width="60" src="ai.png" class="logo"></li>
+<li><a href="Home.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="#">More</a></li>
+</ul>
+</div>
+
+
+<div id="content">
+    <div>GRAPH 1</div>
+    <div>GRAPH 2</div>
+</div>
+
+ 
+<div id="footer">
+    <span>
+        <h3>🤖 MEDI-BOT</h3>
+
+        <input type="text" id="input" placeholder="Enter your query">
+
+        <button onclick="sendMessage()">Send</button>
+
+        <div id="chat"></div>
+    </span>
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+    const input = document.getElementById('input');
+    const chat = document.getElementById('chat');
+
+    const message = input.value.trim();
+
+    if(!message) return;
+
+    chat.innerHTML += '<div class="user">You: ' + message + '</div>';
+    input.value = '';
+
+    fetch('/chat', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message:message})
+    })
+    .then(response => response.json())
+    .then(data => {
+        chat.innerHTML += '<div class="bot">Bot: ' + data.response + '</div>';
+        chat.scrollTop = chat.scrollHeight;
+    })
+    .catch(() => {
+        chat.innerHTML += '<div class="bot">Bot: Server error</div>';
+    });
+}
+
+</script>
+
+</body>
+</html>
