@@ -1,0 +1,156 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+body{
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+}
+
+ 
+#parent{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+ 
+#menu{
+    background:#1f2d3d;
+    padding:15px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+#menu ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+#menu ul li a{
+    text-decoration:none;
+    color:#ecf0f1;
+    font-weight:600;
+    transition:0.3s;
+}
+
+#menu ul li a:hover{
+    color:#1abc9c;
+}
+
+ 
+.logo{
+    border-radius:50%;
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+ 
+#content{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    background:#f4f6f7;
+}
+
+.card{
+    background:white;
+    height:250px;
+    width:220px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    transition:0.4s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+    background:#e8f8f5;
+}
+
+ 
+#footer{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+}
+
+.chatbox{
+    width:300px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+}
+
+.chatbox h3{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+ 
+#chat{
+    height:200px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:10px;
+    background:#fafafa;
+}
+
+ 
+.user{
+    text-align:right;
+    color:#2c3e50;
+    margin:5px;
+}
+
+.bot{
+    text-align:left;
+    color:#16a085;
+    margin:5px;
+}
+
+ 
+.input-area{
+    display:flex;
+    gap:5px;
+}
+
+.input-area input{
+    flex:1;
+    padding:8px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+}
+
+.input-area button{
+    background:#1abc9c;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.input-area button:hover{
+    background:#16a085;
+}
+
