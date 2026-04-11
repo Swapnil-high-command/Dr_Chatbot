@@ -3,18 +3,15 @@
 <head>
 <title>Dr.MEDI-BOT UI</title>
  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
- 
 </head>
 
 <body>
 
 <div id="parent">
 
- 
 <div id="menu">
 <ul>
-<li><img height="45" width="55" src="{{ url_for('static', filename='ai.png') }}" class="logo"></li>
+<li><img height="45" width="55" src="{{ url_for('static', filename='bot.webp') }}" class="logo"></li>
 <li><a href="#">Home</a></li>
 <li><a href="#">About</a></li>
 <li><a href="#">Login</a></li>
@@ -22,19 +19,26 @@
 </ul>
 </div>
 
- 
 <div id="content">
     <div class="card">📊 Health Stats</div>
     <div class="card">🧠 AI Analysis</div>
 </div>
 
- 
 <div id="footer">
     <div class="chatbox">
 
         <h3>🤖 MEDI-BOT</h3>
 
         <div id="chat"></div>
+
+        <div class="suggestions">
+            <button onclick="suggest('I have a fever')">🌡️ Fever</button>
+            <button onclick="suggest('I have a headache')">🤕 Headache</button>
+            <button onclick="suggest('I have a cold and cough')">🤧 Cold & Cough</button>
+            <button onclick="suggest('I have stomach pain')">🤢 Stomach Pain</button>
+            <button onclick="suggest('I feel anxious')">😟 Anxiety</button>
+            <button onclick="suggest('I have chest pain')">❤️ Chest Pain</button>
+        </div>
 
         <div class="input-area">
             <input type="text" id="input" placeholder="Ask something...">
@@ -47,6 +51,11 @@
 </div>
 
 <script>
+
+function suggest(text) {
+    document.getElementById('input').value = text;
+    sendMessage();
+}
 
 function sendMessage(){
     const input = document.getElementById('input');
@@ -69,7 +78,8 @@ function sendMessage(){
         chat.scrollTop = chat.scrollHeight;
     })
     .catch(() => {
-        chat.innerHTML += `<div class="bot">Bot: Server error</div>`;
+        chat.innerHTML += `<div class="bot">Bot: Server error, please try again.</div>`;
+        chat.scrollTop = chat.scrollHeight;
     });
 }
 

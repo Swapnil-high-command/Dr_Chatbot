@@ -4,21 +4,15 @@
     box-sizing:border-box;
     font-family: 'Segoe UI', sans-serif;
 }
-
-
 body{
     background: linear-gradient(135deg, #74ebd5, #ACB6E5);
 }
-
- 
 #parent{
     width:100vw;
     height:100vh;
     display:flex;
     flex-direction:column;
 }
-
- 
 #menu{
     background:#1f2d3d;
     padding:15px 30px;
@@ -44,14 +38,11 @@ body{
 #menu ul li a:hover{
     color:#1abc9c;
 }
-
- 
 .logo{
-    border-radius:50%;
+    border-radius:100%;
     box-shadow:0 0 10px rgba(0,0,0,0.4);
 }
 
- 
 #content{
     flex:1;
     display:flex;
@@ -79,8 +70,6 @@ body{
     transform:translateY(-10px) scale(1.05);
     background:#e8f8f5;
 }
-
- 
 #footer{
     position:fixed;
     bottom:20px;
@@ -96,13 +85,10 @@ body{
     display:flex;
     flex-direction:column;
 }
-
 .chatbox h3{
     text-align:center;
     margin-bottom:10px;
 }
-
- 
 #chat{
     height:200px;
     overflow-y:auto;
@@ -113,7 +99,6 @@ body{
     background:#fafafa;
 }
 
- 
 .user{
     text-align:right;
     color:#2c3e50;
@@ -126,7 +111,6 @@ body{
     margin:5px;
 }
 
- 
 .input-area{
     display:flex;
     gap:5px;
@@ -154,3 +138,26 @@ body{
     background:#16a085;
 }
 
+
+.suggestions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:10px;
+}
+
+.suggestions button{
+    background:#e8f8f5;
+    border:1px solid #1abc9c;
+    padding:5px 10px;
+    border-radius:20px;
+    color:#16a085;
+    cursor:pointer;
+    font-size:12px;
+    transition:0.3s;
+}
+
+.suggestions button:hover{
+    background:#1abc9c;
+    color:white;
+}
